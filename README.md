@@ -4,7 +4,7 @@
 The original form of the bikeshare project was finalized on February 12, 2022 (12/02/2022).  It was introduced to GitHub on the 20th of the same month (20/02/2022).
 
 ### Project Title
-Replace the Project Title
+US Bikeshare Data Explorer
 
 ### Description
 Describe what your project is about and what it does
