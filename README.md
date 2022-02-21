@@ -7,7 +7,7 @@ The original form of the bikeshare project was finalized on February 12, 2022 (1
 US Bikeshare Data Explorer
 
 ### Description
-The Python program featured in this project scans through raw data, such as those returned by a series of SQL queries, and auto-analyzes them in ways that might interest the viewer.
+The Python program featured in this project scans through raw data, such as those returned by a series of SQL queries, and auto-analyzes them in ways that might interest the viewer.  The data in this case documents a bikeshare service that runs in certain major cities; for the sake of keeping the repository clean and quick to update, the raw data files are not included in this repository.
 
 ### Files used
 bikeshare.py - Contains the Python program used to query the data.
