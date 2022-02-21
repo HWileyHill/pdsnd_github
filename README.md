@@ -7,10 +7,11 @@ The original form of the bikeshare project was finalized on February 12, 2022 (1
 US Bikeshare Data Explorer
 
 ### Description
-Describe what your project is about and what it does
+The Python program featured in this project scans through raw data, such as those returned by a series of SQL queries, and auto-analyzes them in ways that might interest the viewer.
 
 ### Files used
-Include the files used
+bikeshare.py - Contains the Python program used to query the data.
+chicago.csv, new_york_city.csv, washington.csv (not included) - Bikeshare data for Chicago, NYC, and Washington, respectively.  This is the data the program queries.
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
