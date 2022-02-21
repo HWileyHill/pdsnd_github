@@ -1,7 +1,7 @@
 >**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
 
 ### Date created
-The original form of the bikeshare project was finalized on February 12, 2022 (12/02/2022).  It was introduced to GitHub on the 20th of the same month (20/02/2022).
+The original form of the bikeshare project was finalized on February 12, 2022 (12/02/2022), but was worked on for 2-3 days before.  It was introduced to GitHub on the 20th of the same month (20/02/2022).
 
 ### Project Title
 US Bikeshare Data Explorer
