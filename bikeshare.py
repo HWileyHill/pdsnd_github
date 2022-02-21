@@ -16,39 +16,39 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # DONE: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # Get user input for city (chicago, new york city, washington)
     line_in = '' #Define this value ahead of time for use in user input
     while line_in.lower() not in ['c', 'n', 'w']:
         print('Are you interested in data on [C]hicago, [N]ew York City, or [W]ashington?')
         line_in = input('Type one letter only: ')
-    
+
     city_dict = {'c': 'chicago', 'n': 'new york city', 'w': 'washington'}
     city = city_dict[line_in.lower()]
 
-    # DONE: get user input for month (all, january, february, ... , june)
+    # Get user input for month (all, january, february, ... , june)
     n_range = []
     for i in range(7):
         n_range.append(str(i)) #Should practice automating making lists like this.
-    
+
     line_in = '-1' #Don't want to recycle the value from the last input
     while line_in not in n_range: #0 through 7
         print('Enter the number for the month you want, from 1 (January) to 6 (June).')
         print('If interested in data for all months, enter the number 0.')
         line_in = input('One numerical digit only, please: ')
-        
+
     month_list = ['all', 'January', 'February', 'March', 'April', 'May', 'June']
     month = month_list[int(line_in)]
     # Coder's note: I'm a bit proud of myself for making 0 the "all" value.
     # It's sensible for the user, and it elegantly dodges a potential one-off error.
 
-    # DONE: get user input for day of week (all, monday, tuesday, ... sunday)
+    # Get user input for day of week (all, monday, tuesday, ... sunday)
     line_in = '-1'
     n_range.append('7')
     while line_in not in n_range:
         print('Enter the number for the weekday you want, from 1 (Monday) to 7 (Sunday).')
         print('If interested in data for all weekdays, enter the number 0.')
         line_in = input('One numerical digit only, please: ')
-        
+
     day_list = ['all', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     day = day_list[int(line_in)]
 
@@ -68,7 +68,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     # I can literally just copy all this from Example Problem 3...
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
@@ -93,39 +93,39 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['Weekday'] == day]
-        
+
     return df
 
 
 def show_raw_data(df, column_name):
     """
     Shows the raw data in an interactive format.
-    
+
     Args:
         (DataFrame) df - the dataframe to show data from
         (str) column_name - the name of the column to organize the data by
     """
-    
+
     view = ''
     while view.lower() not in ['y', 'n']:
         view = input('Display the raw data organized by ' + column_name.lower() + '?  Type Y or N: ')
-    
+
     #Sort the data by the given column name
     if view.lower() == 'y':
         pd.set_option('display.max_columns',200)
         df = df.sort_values(column_name)
-    
+
     it = 0 # It stands for "iterator"
     while view.lower() != 'n':
         #Display the data in sets of five, sorted by the given column name
         if view.lower() == 'y': #This allows the print to be skipped under special circumstances
             print(df.iloc[it:it+5])
-        
+
         view = ''
         while view.lower() not in ['n', 'p', 'r', 'q']:
             print('View [N]ext or [P]revious data, [R]epeat the last data, or [Q]uit?')
             view = input('Type one letter only: ')
-        
+
         if view.lower() == 'n':
             if it+5 > len(df):
                 print('Oops, you\'re at the end of the dataframe!  No more to display!')
@@ -144,7 +144,7 @@ def show_raw_data(df, column_name):
             view = 'y'
         else: #Can only be Q at this point
             view = 'n'
-    
+
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -152,16 +152,16 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # DONE: display the most common month
+    # Display the most common month
     if df.nunique()['Month'] > 1:
         print("Most Frequent Month: " + str(df['Month'].mode()[0]))
     else:
         print("Month statistic skipped over; this slice only covers one month")
 
-    # DONE: display the most common day of week
+    # Display the most common day of week
     print("Most Frequent Weekday: " + str(df['Weekday'].mode()[0]))
 
-    # DONE: display the most common start hour
+    # Display the most common start hour
     df['Hour'] = df['Start Time'].dt.hour
     print("Most Frequent Hour: " + str(df['Hour'].mode()[0]))
 
@@ -177,13 +177,13 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # DONE: display most commonly used start station
+    # Display most commonly used start station
     print("Most Common Start Station: " + df['Start Station'].mode()[0])
 
-    # DONE: display most commonly used end station
+    # Display most commonly used end station
     print("Most Common End Station: " + df['End Station'].mode()[0])
 
-    # DONE: display most frequent combination of start station and end station trip
+    # Display most frequent combination of start station and end station trip
     df['Start/End Station'] = df['Start Station'] + " -> " + df['End Station']
     print("Most Common Start/End Combination: " + df['Start/End Station'].mode()[0])
 
@@ -199,10 +199,10 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # DONE: display total travel time
+    # Display total travel time
     print("Total travel time: " + str(df['Trip Duration'].sum()) + " seconds")
 
-    # DONE: display mean travel time
+    # Display mean travel time
     print("Mean travel time: " + str(round(df['Trip Duration'].mean(), 1)) + " seconds")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -216,16 +216,16 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # DONE: Display counts of user types
+    # Display counts of user types
     print('Statistics of user types:\n' + str(df['User Type'].value_counts()))
 
-    # DONE: Display counts of gender - if available, of course
+    # Display counts of gender - if available, of course
     if 'Gender' in df.columns: #More modular than checking if the city is Washington.
         print('\nStatistics of user genders:\n' + str(df['Gender'].value_counts()))
     else: #A bit of user-friendliness, here
         print('\nGender statistics not available for this dataset')
 
-    # DONE: Display earliest, most recent, and most common year of birth, if available
+    # Display earliest, most recent, and most common year of birth, if available
     if 'Birth Year' in df.columns:
         print('\nEarliest birth year: ' + str(int(df['Birth Year'].min())))
         print('Most recent birth year: ' + str(int(df['Birth Year'].max())))
@@ -241,7 +241,7 @@ def user_stats(df):
         show_raw_data(df, 'Birth Year')
     print('-'*40)
 
-    
+
 def main():
     restart = '' #Defining it up here for better flow control
     while restart.lower() != 'n':
