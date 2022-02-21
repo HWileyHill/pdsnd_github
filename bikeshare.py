@@ -149,7 +149,7 @@ def show_raw_data(df, column_name):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
-    print('\nCalculating The Most Frequent Times of Travel...\n')
+    print('\nCalculating the most frequent times of travel...\n')
     start_time = time.time()
 
     # Display the most common month
@@ -159,11 +159,11 @@ def time_stats(df):
         print("Month statistic skipped over; this slice only covers one month")
 
     # Display the most common day of week
-    print("Most Frequent Weekday: " + str(df['Weekday'].mode()[0]))
+    print("Most frequent weekday: " + str(df['Weekday'].mode()[0]))
 
     # Display the most common start hour
     df['Hour'] = df['Start Time'].dt.hour
-    print("Most Frequent Hour: " + str(df['Hour'].mode()[0]))
+    print("Most frequent hour: " + str(df['Hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     df.drop(columns='Hour', inplace=True) #Clean up
@@ -174,18 +174,18 @@ def time_stats(df):
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
+    print('\nCalculating the most popular stations and trip...\n')
     start_time = time.time()
 
     # Display most commonly used start station
-    print("Most Common Start Station: " + df['Start Station'].mode()[0])
+    print("Most common start station: " + df['Start Station'].mode()[0])
 
     # Display most commonly used end station
-    print("Most Common End Station: " + df['End Station'].mode()[0])
+    print("Most common end station: " + df['End Station'].mode()[0])
 
     # Display most frequent combination of start station and end station trip
     df['Start/End Station'] = df['Start Station'] + " -> " + df['End Station']
-    print("Most Common Start/End Combination: " + df['Start/End Station'].mode()[0])
+    print("Most common start/end combination: " + df['Start/End Station'].mode()[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     df.drop(columns='Start/End Station', inplace = True)
@@ -196,7 +196,7 @@ def station_stats(df):
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
-    print('\nCalculating Trip Duration...\n')
+    print('\nCalculating trip duration...\n')
     start_time = time.time()
 
     # Display total travel time
@@ -213,7 +213,7 @@ def trip_duration_stats(df):
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
-    print('\nCalculating User Stats...\n')
+    print('\nCalculating user stats...\n')
     start_time = time.time()
 
     # Display counts of user types
